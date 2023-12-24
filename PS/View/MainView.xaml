@@ -1,0 +1,214 @@
+﻿<Window x:Class="PS.View.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PS.ViewModel"
+        mc:Ignorable="d"
+        Title="LoginView" Width="710" Height="640"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        MouseDown="Window_MouseDown"
+        WindowStartupLocation="CenterOwner"
+         AllowsTransparency="True" Background="Transparent"
+        >
+    <Window.DataContext>
+        <local:AdminViewModel />
+    </Window.DataContext>
+
+    <Border CornerRadius="12"
+            BorderThickness="2"
+                >
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="White" Offset="0"/>
+        <GradientStop Color="WhiteSmoke" Offset="0.75"/>
+        <GradientStop Color="Beige" Offset="1"/>
+        </LinearGradientBrush>
+        </Border.BorderBrush>
+
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                <GradientStop Color="Pink" Offset="0"/>
+                <GradientStop Color="HotPink" Offset="0.75"/>
+                <GradientStop Color="Pink" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+    
+    <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="PS"
+                               FontWeight="ExtraBlack"
+                               Foreground="Black"
+                               FontFamily="Italic"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="10,0,0,0" FontSize="14" Height="20"/>
+                <!--Сворачивание окна-->
+                <Button x:Name="btnMinimize"
+                           Content="-"
+                            Foreground="Black"
+                           BorderThickness="0"
+                            FontSize="16"
+                            Grid.Column="1"
+                            Cursor="Hand"
+                           Click="btnMinimize_Click"
+                            FontFamily="Arial Unicode MS">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FFF96FA2"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightPink"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template >
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="20" Height="20"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
+
+                <!--Закрытие окна-->
+                <Button x:Name="btnClose"
+                         Grid.Column="3" 
+                            Click="btnClose_Click"
+                            Cursor="Hand"
+                            BorderThickness="0"
+                            Content="x"
+                            Foreground="Black"
+                            FontSize="12"
+                            FontFamily="Arial Unicode MS">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FFF96FA2"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightPink"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template >
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="20" Height="20"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                    <!--<Image Source="Images/icon-cl.png" Width="100"  Height="12"/>-->
+
+
+
+                </Button>
+                <Button x:Name="btnMaximize"
+                        Grid.Column="2"
+                        Click="btnMaximize_Click"
+                         BorderThickness="0"
+                            Content="о"
+                        
+                            Foreground="Black"
+                            FontSize="12"
+                            FontFamily="Arial Unicode MS" >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FFF96FA2"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightPink"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template >
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="20" Height="20"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
+               
+
+            </Grid>
+            <Grid Grid.Row="1" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Images/key-icon.png" Margin="20,0,0,0" Width="80" Height="80" IsEnabled="False">
+
+                    </Image>
+                    <TextBlock Margin="0,25,0,0" Text="PhotoStudio" FontFamily="CommercialScript BT" FontSize="30" >
+
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1" HorizontalAlignment="Right" Height="40">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="92"/>
+                    <ColumnDefinition Width="75"/>
+                    <ColumnDefinition Width="117"/>
+                    <ColumnDefinition Width="80"/>
+
+                </Grid.ColumnDefinitions>
+
+                <RadioButton Grid.Column="0" Style="{StaticResource menuButton}" Margin="0,5,10,5" Command="{Binding OrdersCommand}" IsChecked="True" >
+                    <TextBlock Margin="10 0 0 0" Text="Заказы" FontSize="16" FontFamily="Bookman Old Style" VerticalAlignment="Center">
+
+                    </TextBlock>
+
+
+                </RadioButton>
+                <RadioButton Grid.Column="1" Style="{StaticResource menuButton}" Margin="0,5,10,5" Command="{Binding HallsCommand}" IsChecked="False">
+                    <TextBlock Margin="11 0 0 0" Text="Залы" FontSize="16" FontFamily="Bookman Old Style" />
+
+
+                </RadioButton>
+                <RadioButton Grid.Column="2" Style="{StaticResource menuButton}" Margin="0,5,10,5" Command="{Binding PhotographersCommand}" IsChecked="False">
+                    <TextBlock Margin="8 0 0 0" Text="Фотографы" FontSize="16" FontFamily="Bookman Old Style" />
+
+
+                </RadioButton>
+                <RadioButton Grid.Column="3" Style="{StaticResource menuButton}" Margin="0,5,0,5"  Command="{Binding ReportsCommand}" IsChecked="False">
+                    <TextBlock Margin="10 0 0 0" Text="Отчеты" FontSize="16" FontFamily="Bookman Old Style"  >
+
+                    </TextBlock>
+
+
+                </RadioButton>
+
+            </Grid>
+            <Border Grid.Row="2"  Margin="0 0 0 0 " CornerRadius="5" VerticalAlignment="Top"  HorizontalAlignment="Left" >
+                <ContentControl x:Name="Pages" Content="{Binding CurrentView}" />
+            </Border>
+        </Grid>
+    </Border>
+
+
+</Window>

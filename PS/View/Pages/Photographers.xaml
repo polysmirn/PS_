@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="PS.View.Pages.Photographers"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PS.View.Pages"
+              xmlns:viewmodel="clr-namespace:PS.ViewModel"
+              mc:Ignorable="d"
+        Height="auto" Width="auto">
+    <UserControl.DataContext>
+        <viewmodel:PhotographerViewModel/>
+    </UserControl.DataContext>
+
+
+    <Border >
+
+        <Border 
+                CornerRadius="10"
+                BorderThickness="1"
+                Background="Transparent"
+                BorderBrush="Transparent">
+
+
+
+            <!--Закрытие окна-->
+
+
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+
+
+                <Button Grid.Row="0" Height="30" 
+                            
+                            x:Name="btnAdd"
+                             Style="{StaticResource buttonforUC}"
+                            Content="Добавить"
+                            Command="{Binding AddPhotographerCommand}"
+                            FontSize="18"
+                            Cursor="Hand"
+                           HorizontalContentAlignment="Right"
+                        HorizontalAlignment="Right"
+                        
+                            Click="btnAdd_Click"
+                            FontFamily="Bookman Old Style"  Margin="0,0,0,0" VerticalAlignment="Bottom"/>
+
+                <!--Закрытие окна-->
+
+
+                <ScrollViewer Grid.Row="2"  Margin="40,0,0,0" Grid.ColumnSpan="2">
+                    <ItemsControl VerticalAlignment="Top" Margin="0 0 0 0" ItemsSource="{Binding Photographers, UpdateSourceTrigger=PropertyChanged}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                               
+                                <Button Style="{StaticResource phButtonStyle}" Command="{Binding DataContext.EditPhotographerCommand, RelativeSource={RelativeSource AncestorType=local:Photographers}}" 
+                                        CommandParameter="{Binding }" Margin="0 10 20 10">
+                                    <StackPanel>
+                                        <Image Source="{Binding Image}" Width="120" Height="120"/>
+                                        <TextBlock FontWeight="Regular" Text="{Binding Name}" Margin="0 0 0 3"/>
+                                        <TextBlock FontWeight="Regular" Text="{Binding Experience}" Margin="0 0 0 3"/>
+                                        <TextBlock FontWeight="Regular" Text="{Binding Price_for_hour, StringFormat= '0 руб/час'}"/>
+                                    </StackPanel>
+                                </Button>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
+
+                
+            </Grid>
+
+
+
+
+        </Border>
+    </Border>
+
+
+</UserControl>
